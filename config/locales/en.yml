@@ -1,33 +1,164 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  title: AnyStyle.io
+  description: >-
+    AnyStyle.io parses your biblographies or lists of references regardless of
+    citation style and and turns them into structured, bibliographic data.
+  keywords: >-
+    anystyle, parser, bibliography parser, academic references, citations,
+    citation styles, machine learning, conditional random fields, crf, ruby,
+    bibtex, biblatex, bibjson, reference manager, software, zotero
+
+  index:
+    claim_html: |-
+      Parses <em>scholarly references</em> in no time!<br/>
+      Copy &amp; paste your bibliography below to get started …
+    git: View on GitHub
+    gem: Install RubyGem
+
+  parser:
+    error:
+      heading: Oh Snap!
+      message: Something went terribly wrong.
+    excessive:
+      heading: Be kind!
+      message: >-
+        That's quite a lot of input.
+        Since this is a free service, we'd ask you to limit yourself to %{limit}
+        references per request.
+    source:
+      title: "1. Parse"
+      placeholder: Paste your references here …
+      submit: Parse
+    editor:
+      title: "2. Edit"
+      tag: Assign label
+    labels:
+      author: Author
+      citation_number: Citation number
+      collection_title: Collection title
+      container_title: Container title
+      date: Date
+      director: Director
+      doi: DOI
+      edition: Edition
+      editor: Editor
+      genre: Genre
+      isbn: ISBN
+      journal: Journal
+      location: Location
+      medium: Medium
+      note: Note
+      pages: Pages
+      producer: Producer
+      publisher: Publisher
+      source: Source
+      title: Title
+      translator: Translator
+      url: URL
+      volume: Volume / Issue
+    save:
+      title: "3. Save"
+      train: Use my changes to train the parser!
+
+  documentation:
+    title: Documentation
+    web:
+      title: Web Application
+      left_html: >-
+        <h3>1. Parse</h3>
+
+        <p><em>To get started,</em> simply paste your list of citation references
+        into the textarea above. AnyStyle processes one reference per line so
+        please make sure each reference starts on a new line and remove any
+        superfluous line breaks. Empty lines are fine, though, the parser will
+        just skip them.</p>
+
+        <p class="lead">When you're ready, hit the parse button!</p>
+
+      center_html: >-
+        <h3>2. Edit</h3>
+
+        <p><em>AnyStyle splits</em> your citation references into segments (author, title etc.)
+        based on machine learning heuristics. These segments will be
+        displayed in the token editor above. Please review each segment to
+        make sure the results are correct; in case the parser got something
+        wrong just <span class="text-selection">select individual tokens
+        like you would select text in your favourite text editor</span> and
+        click on the 'Assign label' button to assign the correct label to
+        your selection.</p>
+
+        <p>Pro tip: use <b>Shift</b> and <b>Ctrl/Command</b> to make multiple
+        selections or double-click to select an entire segment at once.</p>
+
+        <p>When using the token editor, note that the parser requires
+        every token to be assigned a label and the individual segments to
+        be contiguous. For the best results combine tokens which
+        semantically belong together. The word <em>in</em>, for example, typically
+        belongs to either the <em>editor</em> or <em>container-title</em> segments (in fact it
+        is a good indicator for those fields). When in doubt how to label
+        a reference, please get in touch with us or take a look at our core
+        <a href="%{core_url}">training data</a> for examples of correctly labelled references.</p>
+
+      right_html: >-
+        <h3>3. Save</h3>
+
+        <p><em>That's it!</em> When you've reviewed the segments just click on one of
+        the available output formats to convert and save your references.</p>
+
+        <p>But there is more: because AnyStyle is based on machine learning you
+        can help us improve! If the parser produces poor results for your
+        citation style or language, just use the token editor to correctly
+        label a handful of references; when you save the results, we will
+        extract your adjustments and use them to train the parser; give
+        us a few minutes to crunch numbers and try to parse your references
+        again using the updated model: we hope the results will be much improved!</p>
+
+        <p>Pro tip: the current model's timestamp is included at the bottom of
+        the parsed results; when training the model, keep an eye on the time
+        to see whether or not your training data was already merged into the
+        model.</p>
+
+        <p>Please note that we receive a lot of training data; too much data can
+        cause the model to deteriorate so we try to reset the model from time
+        to time. Please let us know if training the model does not work for you
+        or if your parse results are poor so we can take a look. Also, if you'd
+        be interested in helping us curate the training data, your help is
+        much appreciated!</p>
+
+    ruby:
+      title: RubyGem
+      install: >-
+        AnyStyle is open source software and freely available as a RubyGem!
+      usage: >-
+        After installing the Gem you can start parsing references on your
+        own computer directly from Ruby like this:
+      more_html:
+        For more details on how to use and train the parser, please consult
+        the <a href="%{doc_url}">API documentation</a>.
+
+  footer:
+    title: Want to know more?
+    lead_html: >-
+      AnyStyle.io is a free service and provided as is<br/>
+      without warranty of any kind. It is intended for non-commercial,<br/>
+      limited use only, and its performance and function time<br/>
+      is not guaranteed in any way.
+
+    left_html: >-
+      We believe that there are better ways to spend your time than to parse
+      bibliographies by hand; and isn't it precisely at this sort of tedious
+      work that machines are supposed to excel?
+      We hope this one will! However, if you find a bug or have a brilliant
+      idea for improvement that we missed, you are welcome to open an issue
+      or feature request.
+
+    right_html: >-
+      AnyStyle uses powerful machine learning heuristics based on
+      <a href="https://en.wikipedia.org/wiki/Conditional_random_field">Conditional Random Fields</a>
+      that can be trained by everyone using our built-in editor.
+      If you would like to support us, require more advanced adjustments,
+      a custom model or want to integrate a similar parser into your own site
+      or product, we'd be happy to work with you.
+
+    issue: Report an issue!
+    contact: Get in touch!

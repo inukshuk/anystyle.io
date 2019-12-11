@@ -1,0 +1,26 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+body {
+  min-width: $container-md + $grid-gutter-width;
+
+  // Blur effect
+  &.modal-open {
+    margin: 0 (-$grid-gutter-width);
+
+    > header,
+    #source,
+    #editor,
+    #export,
+    > .documentation,
+    > .donation,
+    > footer {
+      filter: blur(10px);
+    }
+  }
+}
+
+section {
+  //margin-bottom: 60px;
+}

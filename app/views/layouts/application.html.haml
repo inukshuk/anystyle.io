@@ -1,10 +1,20 @@
 !!!
-%html
+%html(lang="en")
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Www
+    %title= t "title"
+
+    %meta{name: "description", content: t("description") }
+    %meta{name: "keywords", content: t("keywords") }
+
+    = stylesheet_link_tag "application", media: "all"
+
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all'
-  %body
+
+  %body(ng-app="anystyle")
     = yield
+
+    = angular_template 'anystyle/parser'
+    = angular_template '/template/pagination/pagination.html', partial: 'anystyle/pagination'
+
+    -# = javascript_include_tag "application", async: Rails.env.inquiry.production?

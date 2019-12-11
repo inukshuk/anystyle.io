@@ -1,0 +1,130 @@
+//
+// Footer
+// --------------------------------------------------
+
+
+
+footer {
+  padding: 120px 0 40px;
+  background: tint(desaturate(#fef7e1, 20%), 20%);
+  color: #a69e9d;
+
+  h1 {
+    text-align: center;
+    color: $footer-primary;
+  }
+
+  .lead {
+    color: #8f8888;
+  }
+
+  .lead a {
+    > span {
+      border-bottom: 1px solid rgba($brand-primary, 0);
+    }
+
+    &:hover {
+      border-bottom: none;
+
+      > span {
+        transition: border 0.1s linear;
+        border-bottom-color: rgba($brand-primary, 1);
+      }
+    }
+  }
+
+  a .glyphicon {
+    top: 2px;
+    margin-right: 7px;
+  }
+
+  .credits a,
+  .footer-links a {
+    color: $footer-primary;
+
+    &:hover {
+      border-bottom-color: $footer-primary;
+    }
+  }
+
+  .credits {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  ul.footer-links {
+    margin-bottom: 24px;
+
+
+    li {
+      display: inline-block;
+
+      &:first-child:before {
+        content: "";
+        display: none;
+      }
+
+      &:before {
+        content: "·";
+        margin: 0 7px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .logos {
+    text-align: center;
+
+    a, span {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin-left: 7px;
+      margin-right: 7px;
+      opacity: 1;
+
+      &:hover {
+        border-bottom: none;
+        opacity: 1;
+        transition: opacity, 0.1s linear;
+      }
+    }
+
+    .flachware {
+      background: asset-url("flachware.svg") 0 0 no-repeat transparent;
+      width: 92px;
+      height: 23px;
+    }
+
+    .aliceblue {
+      background: asset-url("aliceblue.svg") 0 0 no-repeat transparent;
+      width: 89px;
+      height: 16px;
+      top: 4px;
+    }
+  }
+
+  .credits {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  ul.footer-links {
+    margin-bottom: 24px;
+
+    li {
+      display: inline-block;
+
+      &:first-child:before {
+        content: "";
+        display: none;
+      }
+
+      &:before {
+        content: "·";
+        margin: 0 7px;
+        display: inline-block;
+      }
+    }
+  }
+}

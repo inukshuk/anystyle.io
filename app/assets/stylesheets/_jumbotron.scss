@@ -1,0 +1,79 @@
+//
+// Jumbotron
+// --------------------------------------------------
+
+.jumbotron {
+  text-align: center;
+  color: white;
+  background-color: $gray-dark;
+  padding: 80px 0;
+  margin-bottom: 120px;
+  @include gradient-vertical($start-color: $gray-darker, $end-color: $gray-dark);
+
+  .logo {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 30px 0;
+    display: inline-block;
+    letter-spacing: -1px;
+    @include perspective(400px);
+
+    .transform {
+      display: block;
+      //padding: 21px 15px 25px;
+      //background: $brand-primary;
+      //outline: 1px solid transparent; // Firefox hack for improved antialiasing
+      //border-bottom: 5px solid darken($tension, 5%);
+      //@include gradient-horizontal($start-color: $tension, $end-color: $brand-primary);
+      //@include border-radius($border-radius-large);
+      //@include transform-style(preserve-3d);
+      //@include transform(rotateY(30deg) translateX(20px));
+      //@include box-shadow(0 1px 1px rgba(black, 0.8));
+
+      span {
+        color: $brand-primary;
+        //@include text-shadow(0 -1px 0 rgba(black, 1));
+      }
+
+      span:first-child {
+        color: white;
+        //@include text-shadow(0 -1px 0 rgba(black, 0.4));
+      }
+    }
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.4;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    margin: 0 15px;
+
+    .ruby-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgaGVpZ2h0PSIxNnB4IiB3aWR0aD0iMTZweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnPg0KCTxwb2x5Z29uIGZpbGw9IiMzMzMzMzMiIHBvaW50cz0iMS4yODgsMTAuODYxIDUuMjQxLDkuMzk3IDkuMzk1LDUuMjQyIDEwLjg1OSwxLjI4OCAxMC44NTksMS4yODggOC45OTEsMCA1LjI3NiwxLjcwNiAxLjcwNiw1LjI3NyAwLDguOTkyIDAuMzI3LDEyLjM2IDAuNTcxLDkuODIxIi8+DQoJPHBvbHlnb24gZmlsbD0iIzMzMzMzMyIgcG9pbnRzPSIwLjQyOSwxMy40MDYgMy4wMjEsMTYgMS4wNzIsMTEuNTgyIi8+DQoJPHBvbHlnb24gZmlsbD0iIzMzMzMzMyIgcG9pbnRzPSIxMS4zMjYsMTEuMzI4IDUuNDEyLDkuOTc1IDMuMDIxLDE2IDE1LjM3NywxNS4zNzcgNy43MjIsMTQuMjEyIi8+DQoJPHBvbHlnb24gZmlsbD0iIzMzMzMzMyIgcG9pbnRzPSIxMS4zMjYsMTEuMzI4IDE1LjM3NywxNS4zNzcgMTQuNDY3LDcuNDM1IDE1LjMwMSw1LjAzIDE1LjU0NiwxMi4wMTcgMTYsMy4wMTkgOS45NzIsNS40MTQiLz4NCgk8cG9seWdvbiBmaWxsPSIjMzMzMzMzIiBwb2ludHM9IjEzLjQwNiwwLjQyNCAxMS41OCwxLjA3MyAxNiwzLjAxOSIvPg0KPC9nPg0KPC9zdmc+");
+      background-size: 100%;
+      vertical-align: -10%;
+    }
+
+    &:hover {
+      border-bottom: none;
+    }
+
+    &:hover .ruby-icon {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4PSIwcHgiIHk9IjBweCIgaGVpZ2h0PSIxNnB4IiB3aWR0aD0iMTZweCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxnPg0KCTxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMS4yODgsMTAuODYxIDUuMjQxLDkuMzk3IDkuMzk1LDUuMjQyIDEwLjg1OSwxLjI4OCAxMC44NTksMS4yODggOC45OTEsMCA1LjI3NiwxLjcwNiAxLjcwNiw1LjI3Nw0KCQkwLDguOTkyIDAuMzI3LDEyLjM2IDAuNTcxLDkuODIxIAkiLz4NCgk8cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjAuNDI5LDEzLjQwNiAzLjAyMSwxNiAxLjA3MiwxMS41ODIgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMTEuMzI2LDExLjMyOCA1LjQxMiw5Ljk3NSAzLjAyMSwxNiAxNS4zNzcsMTUuMzc3IDcuNzIyLDE0LjIxMiAJIi8+DQoJPHBvbHlnb24gZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSIxMS4zMjYsMTEuMzI4IDE1LjM3NywxNS4zNzcgMTQuNDY3LDcuNDM1IDE1LjMwMSw1LjAzIDE1LjU0NiwxMi4wMTcgMTYsMy4wMTkgOS45NzIsNS40MTQgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMTMuNDA2LDAuNDI0IDExLjU4LDEuMDczIDE2LDMuMDE5IAkiLz4NCjwvZz4NCjwvc3ZnPg==");
+    }
+  }
+
+  // GitHub icon
+  .fa-lg {
+    vertical-align: -5%;
+  }
+}

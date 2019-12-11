@@ -1,0 +1,22 @@
+//
+// Alerts
+// --------------------------------------------------
+
+.alert {
+  border-width: 10px;
+
+  button.close {
+    opacity: 1;
+
+    &:hover {
+      opacity: 1;
+      color: darken($brand-primary, 12%);
+    }
+  }
+
+  &.alert-danger {
+    border-color: $brand-primary;
+    background: white;
+    color: $brand-primary;
+  }
+}

@@ -1,0 +1,99 @@
+%section.anystyle-parser
+  %section#source
+    .container
+      .row
+        .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+
+          %h2.text-center
+            %em= t "parser.source.title"
+          .alert.alert-danger.alert-dismissable(ng-if="error")
+            %button.close(ng-click="error = false" type="button" aria-hidden="true") &times;
+            %strong= t("parser.error.heading")
+            =t 'parser.error.message'
+
+          .alert.alert-warning(ng-if="excessive")
+            %strong= t("parser.excessive.heading")
+            =t 'parser.excessive.message', limit: 100
+
+          %form
+            .form-group(role="form" spinner="output.processing")
+              %textarea.form-control{ "ng-model" => "source",
+                placeholder: t("parser.source.placeholder"),
+                rows: "10",
+                spellcheck: "false",
+                "ng-disabled" => "output && !output.$resolved",
+                "ng-class" => "{ pristine: !source }" }
+
+            %button.btn.btn-primary.btn-lg.btn-block{ "ng-click" => "parse()",
+              "ng-disabled" => "!source || (output && !output.$resolved) || excessive" }
+              =t 'parser.source.submit'
+              %ng-pluralize{ count: 'input.lines.length',
+                when: "{ '0': '', 'one': 'one reference', 'other': '{} references' }" }
+
+  %section#editor(ng-class="{ disabled: !output.$resolved }")
+    .step-arrow
+      %span.glyphicon.glyphicon-arrow-down
+
+    .container
+      .row
+        .col-md-12
+          %h2.text-center
+            %em= t "parser.editor.title"
+      .row.affix-container
+        .col-md-8
+          %ul#tokens.list-unstyled
+            %li.clearfix(ng-repeat="reference in output | startFrom: offset | limitTo: ipp")
+              %span.label{ "ng-repeat" => "token in reference.tokens",
+                "class" => "label-{{token.label}}",
+                "ng-class" => "{ marked: token.marked, 'last-of-label': $last || token.label !== reference.tokens[$index + 1].label}",
+                "ng-dblclick" => "pick(reference, token, $event)",
+                "ng-mousedown" => "mark(reference, token, $event)" } {{token.value}}
+
+        .col-md-4(style="position: static")
+          .sidebar(affix offset-top="30" offset-bottom="30")
+            %button.btn.btn-lg.btn-primary.btn-block(ng-mousedown="open()" ng-disabled="!anchor")
+              = t 'parser.editor.tag'
+            %ul.list-unstyled
+              %li(ng-repeat="label in history.labels")
+                %button.btn.btn-success.btn-block(ng-mousedown="tag(label)" ng-disabled="!anchor" class="label-{{label.name}}") {{label.translation}}
+
+      .row
+        .col-md-12.text-center
+          %nav
+            %ul(pagination total-items="output.length" page="page" items-per-page="ipp" max-size="5")
+
+          %time.timestamp
+            Model last updated {{output.mtime}} ago
+
+  %section#export(ng-class="{ disabled: !output.$resolved }")
+    .step-arrow.text-center
+      %span.glyphicon.glyphicon-arrow-down
+
+    .container
+      .row
+        .col-md-12
+          %h2.text-center
+            %em= t "parser.save.title"
+
+          =form_tag export_path, method: 'post', target: '_blank', class: 'form-inline' do
+            =hidden_field_tag 'references'
+            .lead
+              .form-group
+                .checkbox
+                  %label(ng-class="{ disabled: !output.edited }")
+                    %input(type="checkbox" name="reviewed" ng-model="output.reviewed" ng-disabled="!output.edited")
+                    =t "parser.save.train"
+
+            .text-center
+              %button.btn.btn-success.btn-lg(ng-click="save('bib')" ng-disabled="!output.$resolved") BibTeX
+              %button.btn.btn-success.btn-lg(ng-click="save('citeproc')" ng-disabled="!output.$resolved") CiteProc/JSON
+              // %button.btn.btn-success.btn-lg(ng-click="save('json')" ng-disabled="!output.$resolved") JSON
+              %button.btn.btn-success.btn-lg(ng-click="save('xml')" ng-disabled="!output.$resolved") XML
+
+  .label-selector(ng-show="selector" ng-mousedown="close()")
+    .modal-backdrop.fade(ng-class="{ in: selector }")
+    .container.fade(ng-class="{ in: selector }")
+      .row
+        - translated_labels.each do |label, translation|
+          .col-md-4
+            %button.btn.btn-lg.btn-success.btn-block(ng-mousedown="tag({ name: '#{label}', translation: '#{translation}' })" class="label-#{label}")= translation

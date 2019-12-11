@@ -1,0 +1,52 @@
+%section.documentation
+  %section#ui
+    .container
+      .row
+        .col-md-12
+          %h1=t "documentation.title"
+      .row
+        .col-md-12
+          %h2=t "documentation.web.title"
+      .row
+        .col-md-4.hyphenate=t "documentation.web.left_html"
+        .col-md-4.hyphenate=t "documentation.web.center_html",
+          core_url: repo_url(path: "blob/master/res/parser/core.xml")
+        .col-md-4.hyphenate=t "documentation.web.right_html"
+  %section#rubygem
+    .container
+      .row
+        .col-md-12
+          %h2=t "documentation.ruby.title"
+          %p.lead=t "documentation.ruby.install"
+          %pre
+            %code
+              :preserve
+                $ [sudo] gem install anystyle
+          %p=t "documentation.ruby.usage"
+          %pre
+            %code
+              :preserve
+                >> require "anystyle"
+
+                >> AnyStyle.parse """
+                    Turing, Alan, Computing Machinery and Intelligence, Mind 59, pp 433-460 (1950)
+                   """
+                => [{
+                     :type => "article-journal",
+                     :author => [{ :family => "Turing", :given => "Alan" }],
+                     :date => ["1950"],
+                     :title => "Computing Machinery and Intelligence",
+                     :volume => ["59"],
+                     :"container-title" => "Mind",
+                     :pages => ["433–460"],
+                     :scripts => ["Common", "Latin"]
+                   }]
+
+          %p=t "documentation.ruby.more_html", doc_url: doc_url
+  %section#cli
+    .container
+      .row
+        .col-md-12
+          %h2 On the Command Line
+          %p.lead
+            AnyStyle also has a command-line interface.

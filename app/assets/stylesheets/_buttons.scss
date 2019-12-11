@@ -1,0 +1,37 @@
+//
+// Buttons
+// --------------------------------------------------
+
+.btn {
+  border: none;
+  -webkit-font-smoothing: subpixel-antialiased; // Fix webkit position fixed font rendering issue
+}
+
+// Button default
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active {
+  background-color: $brand-primary;
+  color: white;
+}
+
+// Button success
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active {
+  background-color: darken($gray, 5%); // Default is 8%
+}
+
+.btn-lg {
+  font: {
+    size: 20px;
+    weight: 300;
+  }
+}
+
+// Disabled state
+.btn[disabled] {
+  background: $gray-light;
+}

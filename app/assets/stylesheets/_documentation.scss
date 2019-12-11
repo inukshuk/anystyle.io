@@ -1,0 +1,146 @@
+//
+// Documentation
+// --------------------------------------------------
+
+section.documentation {
+  padding-top: 40px;
+  background-color: $gray-dark;
+  //padding-top: 40px;
+  color: $gray-lighter;
+
+  > section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  h1 {
+    color: $brand-primary;
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    color: $gray;
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    color: $gray-light;
+    font-size: 16px;
+    margin-top: 0;
+  }
+
+  .text-selection {
+    background: $brand-primary;
+  }
+
+  pre {
+    border: none;
+    padding: 20px;
+    //margin-bottom: #{$line-height-base}em;
+    margin-top: #{$line-height-base}em;
+    margin-bottom: #{$line-height-base}em;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    background: $gray-darker;
+
+    code {
+      color: $brand-primary;
+    }
+  }
+
+  code {
+    color: $gray-lighter;
+    background: $gray-darker;
+  }
+
+  // UI
+  #ui {
+  }
+
+  // RubyGem
+  #rubygem {
+    text-align: center;
+    background-color: tint($gray-dark, 3%);
+
+    h2 {
+      color: tint($gray, 3%);
+    }
+  }
+
+  // API
+  #api {
+    text-align: center;
+
+    .columns {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  }
+
+  #get-api-key {
+    padding: 40px 0;
+    background: tint($gray-dark, 3%);
+    margin: 60px 0;
+    height: 127px;
+
+    &:hover {
+      background: tint($gray-dark, 4%);
+    }
+
+    .col-md-3 {
+      padding-right: 30px;
+    }
+
+    input {
+      box-shadow: none;
+      background-color: transparent;
+      border: none;
+      color: $gray-lighter;
+      font: {
+        size: 36px;
+        weight: 500;
+      }
+      //line-height: 1;
+      height: auto;
+      padding: 0 0 0 15px;
+    }
+
+
+    /*::-webkit-input-placeholder {
+      @include placeholder;
+    }*/
+
+    ::-moz-placeholder {
+      font: {
+        size: 36px;
+        weight: 500;
+        //line-height: 1;
+      }
+    }
+
+    .btn {
+      //margin-top: 10px;
+      vertical-align: top;
+
+      &[disabled] {
+        background: $gray;
+        opacity: 0.5;
+      }
+    }
+
+    .success-message {
+      text-align: center;
+      font: {
+        size: 30px;
+        weight: 500;
+      }
+      line-height: 47px;
+    }
+  }
+}

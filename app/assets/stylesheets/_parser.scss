@@ -1,0 +1,365 @@
+//
+// Parser
+// --------------------------------------------------
+
+
+@mixin placeholder {
+  font: {
+    size: 30px;
+    weight: 300;
+  }
+  text-align: center;
+  line-height: 194px;
+  color: #ccc;
+}
+
+// Step arrow
+.step-arrow {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, -30px);
+
+  .glyphicon-arrow-down {
+    font-size: 100px;
+    color: $text-color;
+    vertical-align: top;
+    top: inherit;
+    transform: translateX(4px);
+
+    .disabled & {
+      color: #fff;
+    }
+
+    #export.disabled & {
+      color: #f6f6f6;
+    }
+  }
+}
+
+#main {
+  /** For page stability during initial loading */
+  min-height: 896px;
+}
+
+// AnyStyle Parser
+.anystyle-parser {
+
+  /**
+   * The parser must have a higher z-index
+   * than the other sections because it
+   * contains the modal backddrop.
+   */
+  position: relative;
+  z-index: 1;
+
+  > section {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  // Source
+  #source {
+    padding-top: 0px;
+
+    textarea {
+      resize: vertical;
+      min-height: 244px;
+      background: $gray-lighter;
+      border: 15px solid #ddd;
+      border-image: url("images/border.png") 15px repeat;
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: $border-radius-large;
+      transition: none;
+
+      &.pristine {
+        border-style: dashed;
+      }
+
+      &[disabled] {
+        color: $gray-lighter;
+        border-color: $gray-lighter;
+      }
+    }
+
+    ::-webkit-input-placeholder {
+      @include placeholder;
+    }
+
+    ::-moz-placeholder {
+      @include placeholder;
+    }
+
+    .btn {
+      font-size: 30px;
+      padding: 20px 30px;
+      margin-bottom: 40px;
+    }
+  }
+
+  // Editor
+  #editor {
+    background-color: #f6f6f6;
+    position: relative;
+
+    ul#tokens {
+      overflow: hidden;
+      margin-bottom: 0px;
+      @include user-select(none);
+
+      li {
+        margin-bottom: 30px;
+        margin-left: -4px;
+        padding-left: 180px;
+
+        .label {
+          position: relative;
+          cursor: pointer;
+          font-size: inherit;
+          font-weight: inherit;
+          line-height: 1;
+          padding: 0.3em 0.3em 0.4em 0.3em;
+          margin-bottom: 4px;
+          margin-right: 4px;
+          background: #757575; // 0.8 $gray + background
+          position: relative;
+          float: left;
+          clear: left;
+          margin-bottom: 10px;
+
+          &.marked {
+            background: $brand-primary;
+          }
+        }
+
+        .label:before {
+          display: block;
+          background: none;
+          color: $gray-dark;
+          font: {
+            size: 14px;
+            style: italic;
+          }
+          position: absolute;
+          left: -180px;
+          text-align: right;
+          width: 160px;
+          cursor: default;
+        }
+
+        .label.last-of-label:after {
+          content: " ";
+          position: absolute;
+          top: 0;
+          width: 574px;
+          height: 24px;
+          margin-left: 4px;
+          cursor: default;
+        }
+
+        %segment {
+          float: left;
+          clear: none;
+
+          &:before {
+            display: none;
+            content: "";
+          }
+        }
+
+        @each $label, $translation in $labels {
+          .label-#{$label} + .label-#{$label} {
+            @extend %segment;
+          }
+
+          .label-#{$label}:before {
+            content: $translation;
+          }
+        }
+      }
+    }
+
+    .affix-container {
+      position: relative;
+    }
+
+    .sidebar {
+      width: 293px;
+
+      @media (min-width: $screen-lg) {
+        width: 360px;
+      }
+
+      &.affix-top {
+        position: relative;
+        overflow: hidden; // To ensure affix height calculation is stable!
+      }
+
+      &.affix-bottom {
+        position: absolute;
+        bottom: 0px;
+      }
+
+      &.affix {
+        position: fixed;
+        top: 30px;
+      }
+
+      > .btn-lg {
+        padding: 20px 30px;
+      }
+
+      ul {
+        margin-bottom: 40px;
+
+        li {
+          margin-top: 10px;
+
+          &:first-child {
+            margin-top: ($grid-gutter-width / 2);
+          }
+
+          @for $i from 1 through 12 {
+            &:nth-child(#{$i}) .btn {
+              opacity: 1 - $i * 0.08;
+            }
+
+            &:nth-child(#{$i}) .btn[disabled] {
+              opacity: (1 - $i * 0.05)*0.65;
+            }
+          }
+
+          &:hover .btn:not([disabled]) {
+            opacity: 1;
+          }
+        }
+      }
+
+      a {
+        cursor: pointer;
+      }
+    }
+
+    .timestamp {
+      color: rgba($gray-light, 0.65);
+      display: block;
+      //line-height: 20px;
+      margin: 0px 0 40px;
+      //font-size: 13px;
+    }
+
+    // Disabled state
+    &.disabled {
+      .affix-container,
+      nav,
+      .timestamp {
+        display: none;
+      }
+    }
+  }
+
+  // Export
+  #export {
+    margin-bottom: 0;
+    position: relative;
+
+    .lead {
+      text-align: center;
+
+      .checkbox {
+        label {
+          font-size: 21px;
+          font-weight: 300;
+
+          &.disabled {
+            color: rgba($gray-light, 0.65);
+            cursor: default;
+          }
+
+          input {
+            position: relative;
+            bottom: 2px;
+          }
+        }
+      }
+    }
+
+    div.text-center {
+      margin-bottom: 40px;
+    }
+
+    &.disabled {
+      form {
+        display: none;
+      }
+    }
+  }
+
+  // Label selector
+  .label-selector {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    .container {
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: $zindex-modal;
+      margin-top: ($grid-gutter-width / 2);
+      transform: translate(-50%, -50%);
+
+      .btn {
+        margin: 0 0 30px 0;
+        padding: 20px 30px;
+      }
+
+      // Adapt to medium viewport
+      @media (max-height: $label-viewport-medium) {
+        margin-top: ($grid-gutter-width / 3);
+
+        .row {
+          margin: 0 (-$label-spacing-medium / 2);
+
+          .col-md-4 {
+            padding: 0 ($label-spacing-medium / 2);
+
+            .btn {
+              padding-top: 15px;
+              padding-bottom: 15px;
+              margin-bottom: $label-spacing-medium;
+            }
+          }
+        }
+      }
+
+      // Adapt to small viewport
+      @media (max-height: $label-viewport-small) {
+        margin-top: ($grid-gutter-width / 6);
+
+        .row {
+          margin: 0 (-$label-spacing-small / 2);
+
+          .col-md-4 {
+            padding: 0 ($label-spacing-small / 2);
+
+            .btn {
+              padding-top: 10px;
+              padding-bottom: 10px;
+              margin-bottom: $label-spacing-small;
+            }
+          }
+        }
+      }
+    }
+
+    .modal-backdrop {
+      background: white;
+      opacity: 0.8;
+    }
+  }
+}

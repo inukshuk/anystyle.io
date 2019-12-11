@@ -1,0 +1,94 @@
+//
+// Typography
+// --------------------------------------------------
+
+// Hyphens
+@mixin hyphens($hyphens) {
+  -webkit-hyphens: $hyphens;
+  -moz-hyphens: $hyphens;
+  -ms-hyphens: $hyphens;
+  hyphens: $hyphens;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+h1 {
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+h2 {
+  letter-spacing: -0.5px;
+}
+
+.lead {
+  font-weight: 300;
+
+  .hyphenate & {
+    @include hyphens(none);
+  }
+
+  h1 + &,
+  h2 + & {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+}
+
+h1 + .lead {
+  margin-top: -30px;
+  font-size: 24px;
+}
+
+h2 + .lead {
+  margin-top: -20px;
+}
+
+a {
+  border-bottom-color: rgba($brand-primary, 0);
+
+  &:hover {
+    text-decoration: none;
+    border-bottom: 1px solid rgba($brand-primary, 1);
+    transition: border 0.1s linear;
+  }
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: #{$line-height-base}em;
+}
+
+em {
+  font-style: normal;
+  color: $brand-primary;
+
+  .disabled & {
+    color: $gray-light;
+  }
+}
+
+dl {
+  font-size: 16px;
+  line-height: #{$line-height-base}em;
+  margin-bottom:  #{$line-height-base}em;
+
+  dt {
+    color: $gray-light;
+    font-weight: 400;
+  }
+}
+
+.hyphenate p {
+  @include hyphens(auto);
+}

@@ -1,0 +1,18 @@
+%header
+  .jumbotron
+    .container
+      %span.logo
+        %span.transform
+          %span Any
+          %span> Style
+      %h1= t "index.claim_html"
+      %a.btn.btn-default.btn-lg(href=repo_url)
+        = fa_icon "github lg", text: t("index.git")
+      %a.btn.btn-default.btn-lg(href=gem_url)>
+        %i.ruby-icon
+        = t "index.gem"
+
+%section#main(anystyle-parser)
+
+= render partial: "documentation"
+= render partial: "footer"
