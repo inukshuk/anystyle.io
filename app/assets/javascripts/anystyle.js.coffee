@@ -28,7 +28,7 @@ angular.
     'MarkedTokens'
 
     (resource, MarkedTokens) ->
-      Reference = resource '/parse/references.:format', {},
+      Reference = resource '/parse.:format', {},
         parse:
           method: 'POST'
           isArray: true
@@ -161,7 +161,7 @@ angular.
 
         scope.parse = ->
           scope.output = Reference.parse
-            references: scope.input.lines
+            input: scope.input.lines
 
             (output, headers) ->
               delete output.processing
