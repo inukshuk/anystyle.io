@@ -19,6 +19,11 @@ gem 'bootstrap-sass', '~> 3.4'
 gem 'bourbon'
 gem 'font-awesome-rails'
 
+gem 'angularjs-rails', '~> 1.3'
+gem 'coffee-rails', '~> 4.2'
+gem 'jquery-rails'
+gem 'uglifier', '>= 1.3.0'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
