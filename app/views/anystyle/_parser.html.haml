@@ -94,6 +94,6 @@
     .modal-backdrop.fade(ng-class="{ in: selector }")
     .container.fade(ng-class="{ in: selector }")
       .row
-        - translated_labels.each do |label, translation|
+        - AnyStyle.labels.each do |label, translation|
           .col-md-4
             %button.btn.btn-lg.btn-success.btn-block(ng-mousedown="tag({ name: '#{label}', translation: '#{translation}' })" class="label-#{label}")= translation

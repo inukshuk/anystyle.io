@@ -1,24 +1,13 @@
 module AnystyleHelper
-  def repo_url(
-    host: 'https://github.com',
-    user: 'inukshuk',
-    project: 'anystyle',
-    path: nil
-  )
-    [host, user, project, path].compact.join('/')
+  def doc_url
+    Rails.configuration.anystyle[:doc]
   end
 
   def gem_url
-    'http://rubygems.org/gems/anystyle'
+    Rails.configuration.anystyle[:gem]
   end
 
-  def doc_url
-    'http://rubydoc.info/gems/anystyle'
-  end
-
-  def translated_labels
-    AnyStyleIo
-      .translated_labels
-      .sort_by { |_, t| t.parameterize }
+  def git_url(*args)
+    [Rails.configuration.anystyle[:git], *args].compact.join('/')
   end
 end

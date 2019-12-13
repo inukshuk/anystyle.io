@@ -8,7 +8,7 @@
           .col-md-6.hyphenate
             %p=t "footer.left_html"
             %p.lead.text-center
-              =link_to repo_url(path: "issues") do
+              =link_to git_url("issues") do
                 %i.glyphicon.glyphicon-circle-arrow-right><
                 %span=t "footer.issue"
           .col-md-6.hyphenate
@@ -20,11 +20,11 @@
         %p.credits
           Developed by #{link_to "Sylvester Keil", "https://github.com/inukshuk"}.
           Designed by #{link_to "Flachware", "http://flachware.com"}.
-          With #{fa_icon "heart", title: "a broken heart"} at aliceblue.
+          With #{fa_icon "heart-broken", title: "a broken heart"} at aliceblue.
         %ul.list-unstyled.footer-links.text-center
           %li><= 'v' << AnyStyle::VERSION
-          %li><= link_to "GitHub", repo_url
-          %li><= link_to "Issues", repo_url(path: "issues")
+          %li><= link_to "GitHub", git_url
+          %li><= link_to "Issues", git_url("issues")
           %li><= link_to "RubyDoc", doc_url
           %li><= link_to "RubyGem", gem_url
         %p.logos

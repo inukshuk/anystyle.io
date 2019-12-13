@@ -21,28 +21,3 @@ $label-spacing-medium:  $grid-gutter-width * 2 / 3;
 $label-viewport-small:  ($label-spacing-medium * ($label-rows + 1) + 57 * $label-rows); // 57px button height
 $label-spacing-small:   $grid-gutter-width / 3;
 
-
-$labels:
-  author "Author",
-  citation_number "Citation number",
-  collection_title "Collection title",
-  container_title "Container title",
-  date "Date",
-  director "Director",
-  doi "DOI",
-  edition "Edition",
-  editor "Editor",
-  genre "Genre",
-  isbn "ISBN",
-  journal "Journal",
-  location "Location",
-  medium "Medium",
-  note "Note",
-  pages "Pages",
-  producer "Producer",
-  publisher "Publisher",
-  source "Source",
-  title "Title",
-  translator "Translator",
-  url "URL",
-  volume "Volume / Issue";

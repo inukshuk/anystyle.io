@@ -10,9 +10,9 @@ en:
 
   index:
     claim_html: |-
-      Parses <em>scholarly references</em> in no time!<br/>
+      Parses <em>academic references</em> in no time!<br/>
       Copy &amp; paste your bibliography below to get started …
-    git: View on GitHub
+    github: View on GitHub
     gem: Install RubyGem
 
   parser:

@@ -1,19 +1,23 @@
+$labels: <%=
+  AnyStyle.labels.map { |k, v|
+    "#{k} #{v.inspect}"
+  }.join(', ')
+%>;
+
 @import
   "functions",
   "bootstrap-sprockets",
   "bootstrap-variables",
   "custom_bootstrap",
-  "font-awesome";
+  "font_awesome5_webfont",
 
-@import
   "variables",
   "scaffolding",
   "typography",
   "buttons",
   "alerts",
-  "pagination";
+  "pagination",
 
-@import
   "jumbotron",
   "parser",
   "documentation",

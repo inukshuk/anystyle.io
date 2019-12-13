@@ -1,6 +1,4 @@
 class AnystyleController < ApplicationController
-  attr_reader :parser
-
   def index
   end
 

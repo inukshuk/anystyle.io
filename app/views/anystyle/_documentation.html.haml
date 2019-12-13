@@ -10,7 +10,7 @@
       .row
         .col-md-4.hyphenate=t "documentation.web.left_html"
         .col-md-4.hyphenate=t "documentation.web.center_html",
-          core_url: repo_url(path: "blob/master/res/parser/core.xml")
+          core_url: git_url("blob/master/res/parser/core.xml")
         .col-md-4.hyphenate=t "documentation.web.right_html"
   %section#rubygem
     .container
@@ -37,7 +37,7 @@
                      :date => ["1950"],
                      :title => "Computing Machinery and Intelligence",
                      :volume => ["59"],
-                     :"container-title" => "Mind",
+                     :journal => "Mind",
                      :pages => ["433–460"],
                      :scripts => ["Common", "Latin"]
                    }]

@@ -1,0 +1,37 @@
+default: &default
+  labels:
+    - author
+    - citation_number
+    - collection_title
+    - container_title
+    - date
+    - director
+    - doi
+    - edition
+    - editor
+    - genre
+    - isbn
+    - journal
+    - location
+    - medium
+    - note
+    - pages
+    - producer
+    - publisher
+    - source
+    - title
+    - translator
+    - url
+    - volume
+  model: <%= Rails.root.join("storage", "#{Rails.env}.mod") %>
+  git: https://github.com/inukshuk/anystyle
+  doc: https://rubydoc.info/gems/anystyle
+  gem: https://rubygems.org/gems/anystyle
+
+development:
+  <<: *default
+test:
+  <<: *default
+  model: <%= Rails.root.join("tmp", "storage", "#{Rails.env}.mod") %>
+production:
+  <<: *default
