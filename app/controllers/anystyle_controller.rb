@@ -11,7 +11,7 @@ class AnystyleController < ApplicationController
   private
 
   def input
-    request.params[:input]
+    request.params[:input].taint
   end
 
   def set_last_modified
