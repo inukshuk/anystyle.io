@@ -33,7 +33,7 @@ angular.
           method: 'POST'
           isArray: true
           params:
-            format: 'raw'
+            format: 'json'
           transformResponse: (data, headers) ->
             try
               if (/json/).test headers('content-type')
@@ -156,6 +156,9 @@ angular.
       link: (scope, element) ->
         [form, body, skip] = [element.find('#export form:first'), $('body')]
 
+        token = $('meta[name="csrf-token"]').attr('content')
+        $('[name="authenticity_token"]', form).val token if token?
+
         scope.history = new LabelHistory 12
         scope.input = new ParserInput
 
@@ -195,7 +198,7 @@ angular.
 
         scope.save = (format) ->
           form.attr 'action', [scope.save.path, format].join('.')
-          $('[name="references"]', form).val angular.toJson(scope.output)
+          $('[name="dataset"]', form).val angular.toJson(scope.output)
           form.submit()
           true
 
