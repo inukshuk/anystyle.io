@@ -4,7 +4,6 @@ ruby '2.6.4'
 
 gem 'anystyle', '~> 1.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
@@ -16,7 +15,7 @@ gem 'haml-rails', '>= 2'
 gem 'sass-rails', '>= 6'
 
 gem 'bootstrap-sass', '~> 3.4'
-gem 'font-awesome-rails'
+gem 'font_awesome5_rails'
 
 gem 'angularjs-rails', '~> 1.3'
 gem 'coffee-rails', '~> 4.2'
