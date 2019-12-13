@@ -16,7 +16,6 @@ gem 'haml-rails', '>= 2'
 gem 'sass-rails', '>= 6'
 
 gem 'bootstrap-sass', '~> 3.4'
-gem 'bourbon'
 gem 'font-awesome-rails'
 
 gem 'angularjs-rails', '~> 1.3'
