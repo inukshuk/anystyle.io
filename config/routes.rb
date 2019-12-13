@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post 'parse', to: 'anystyle#parse', as: :parse
-  post 'export', to: 'anystyle#export', as: :export
+  post 'format', to: 'anystyle#format', as: :format
 
   root 'anystyle#index'
 end
