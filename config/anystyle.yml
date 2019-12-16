@@ -27,6 +27,7 @@ default: &default
   git: https://github.com/inukshuk/anystyle
   doc: https://rubydoc.info/gems/anystyle
   gem: https://rubygems.org/gems/anystyle
+  parse_limit: 1000
 
 development:
   <<: *default

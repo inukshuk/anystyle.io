@@ -5,9 +5,7 @@ class AnystyleController < ApplicationController
   def parse
     input = params.require(:input).taint
 
-    if input.length > 1000
-      bad_request 'Excessive use'
-    else
+    if input.length <= Rails.configuration.parse_limit
       dataset = parser.parse(input, format: 'wapiti')
 
       respond_to do |format|
@@ -15,6 +13,8 @@ class AnystyleController < ApplicationController
           render json: dataset.map { |s| s.map { |t| [t.label, t.value] } }
         }
       end
+    else
+      bad_request 'Excessive use'
     end
   ensure
     response.headers['X-AnyStyle-Last-Modified'] = model_time

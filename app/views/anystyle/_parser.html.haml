@@ -13,7 +13,7 @@
 
           .alert.alert-warning(ng-if="excessive")
             %strong= t("parser.excessive.heading")
-            =t 'parser.excessive.message', limit: 1000
+            =t 'parser.excessive.message', limit: Rails.configuration.anystyle.parse_limit
 
           %form
             .form-group(role="form" spinner="output.processing")
