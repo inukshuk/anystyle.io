@@ -28,7 +28,7 @@ angular.
     'MarkedTokens'
 
     (resource, MarkedTokens) ->
-      Reference = resource '/parse.:format', {},
+      Reference = resource '/parse', {},
         parse:
           method: 'POST'
           isArray: true
@@ -197,12 +197,10 @@ angular.
 
 
         scope.save = (format) ->
-          form.attr 'action', [scope.save.path, format].join('.')
+          $('[name="format"]', form).val format
           $('[name="dataset"]', form).val angular.toJson(scope.output)
           form.submit()
           true
-
-        scope.save.path = form.attr 'action'
 
         scope.tag = (label) ->
           try

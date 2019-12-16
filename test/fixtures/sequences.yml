@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  xml: |
+    <sequence>
+      <author>Turing, Alan,</author>
+      <title>Computing Machinery and Intelligence,</title>
+      <journal>Mind</journal>
+      <volume>59,</volume>
+      <pages>pp 433–460</pages>
+      <date>(1950)</date>
+    </sequence>

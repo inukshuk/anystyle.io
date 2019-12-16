@@ -13,7 +13,7 @@
 
           .alert.alert-warning(ng-if="excessive")
             %strong= t("parser.excessive.heading")
-            =t 'parser.excessive.message', limit: 100
+            =t 'parser.excessive.message', limit: 1000
 
           %form
             .form-group(role="form" spinner="output.processing")
@@ -77,6 +77,7 @@
 
           =form_tag format_path, method: 'post', target: '_blank', class: 'form-inline' do
             =hidden_field_tag 'dataset'
+            =hidden_field_tag 'format'
             .lead
               .form-group
                 .checkbox
