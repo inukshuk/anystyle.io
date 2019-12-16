@@ -26,7 +26,7 @@ class AnystyleController < ApplicationController
 
     dataset = Wapiti::Dataset.new(input.map { |s|
       seq = Wapiti::Sequence.new(s['tokens'].map { |t|
-        Wapiti::Token.new t['value'], label: t['label'].tr('_', '-')
+        Wapiti::Token.new t['value'], label: t['label']
       })
 
       training_data << Sequence.new(xml: seq.to_xml) if s['pertinent']

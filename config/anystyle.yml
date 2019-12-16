@@ -1,9 +1,9 @@
 default: &default
   labels:
     - author
-    - citation_number
-    - collection_title
-    - container_title
+    - citation-number
+    - collection-title
+    - container-title
     - date
     - director
     - doi

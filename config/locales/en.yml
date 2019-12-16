@@ -34,9 +34,9 @@ en:
       tag: Assign label
     labels:
       author: Author
-      citation_number: Citation number
-      collection_title: Collection title
-      container_title: Container title
+      citation-number: Citation number
+      collection-title: Collection title
+      container-title: Container title
       date: Date
       director: Director
       doi: DOI
