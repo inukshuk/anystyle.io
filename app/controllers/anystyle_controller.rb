@@ -5,7 +5,7 @@ class AnystyleController < ApplicationController
   def parse
     input = params.require(:input).taint
 
-    if input.length <= Rails.configuration.parse_limit
+    if input.length <= Rails.configuration.anystyle.parse_limit
       dataset = parser.parse(input, format: 'wapiti')
 
       respond_to do |format|
@@ -61,7 +61,10 @@ class AnystyleController < ApplicationController
 
   def save_training_data(sequences)
     saved_count = sequences.map(&:save).count(true)
-    TrainModelJob.perform_later unless saved_count.zero?
+
+    unless saved_count.zero?
+      TrainModelJob.perform_later(parser.model.path)
+    end
   end
 
   def model_time
