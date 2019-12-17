@@ -53,6 +53,8 @@ class AnystyleController < ApplicationController
 
   def parser
     AnyStyle.parser
+  ensure
+    AnyStyle.parser.reload if AnyStyle.parser.stale?
   end
 
   def train_model?
