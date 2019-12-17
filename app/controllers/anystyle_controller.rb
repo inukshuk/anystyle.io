@@ -22,14 +22,14 @@ class AnystyleController < ApplicationController
 
   def format
     input = JSON.parse(params.require(:dataset))
-    training_data = []
+    sequences = []
 
     dataset = Wapiti::Dataset.new(input.map { |s|
       seq = Wapiti::Sequence.new(s['tokens'].map { |t|
         Wapiti::Token.new t['value'], label: t['label']
       })
 
-      training_data << Sequence.new(xml: seq.to_xml) if s['pertinent']
+      sequences << Sequence.new(xml: seq.to_xml) if s['pertinent']
 
       seq
     })
@@ -46,7 +46,7 @@ class AnystyleController < ApplicationController
       }
     end
   ensure
-    training_data.each(&:save) if reviewed?
+    save_training_data sequences if train_model?
   end
 
   private
@@ -55,8 +55,13 @@ class AnystyleController < ApplicationController
     AnyStyle.parser
   end
 
-  def reviewed?
+  def train_model?
     !!params[:reviewed]
+  end
+
+  def save_training_data(sequences)
+    saved_count = sequences.map(&:save).count(true)
+    TrainModelJob.perform_later unless saved_count.zero?
   end
 
   def model_time
