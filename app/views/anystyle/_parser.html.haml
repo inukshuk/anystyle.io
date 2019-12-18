@@ -13,7 +13,7 @@
 
           .alert.alert-warning(ng-if="excessive")
             %strong= t("parser.excessive.heading")
-            =t 'parser.excessive.message', limit: Rails.configuration.anystyle.parse_limit
+            =t 'parser.excessive.message', limit: 1000
 
           %form
             .form-group(role="form" spinner="output.processing")
@@ -87,7 +87,7 @@
 
             .text-center
               %button.btn.btn-success.btn-lg(ng-click="save('csl')" ng-disabled="!output.$resolved") CSL-JSON
-              %button.btn.btn-success.btn-lg(ng-click="save('bib')" ng-disabled="!output.$resolved") BibTeX
+              %button.btn.btn-success.btn-lg(ng-click="save('bibtex')" ng-disabled="!output.$resolved") BibTeX
               // %button.btn.btn-success.btn-lg(ng-click="save('json')" ng-disabled="!output.$resolved") JSON
               %button.btn.btn-success.btn-lg(ng-click="save('xml')" ng-disabled="!output.$resolved") XML
 

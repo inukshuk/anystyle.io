@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class AnystyleControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
   def with_protection
     original_protection = ActionController::Base.allow_forgery_protection
     ActionController::Base.allow_forgery_protection = true
@@ -51,7 +53,7 @@ class AnystyleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'parse should respond to bibtex' do
-    post parse_url, params: { format: 'bib', input: ['test'] }
+    post parse_url, params: { format: 'bibtex', input: ['test'] }
     assert_response :success
     assert_equal 'application/x-bibtex', @response.media_type
     assert_match(/^@\w+\{[\w-]+,\s+\w+ = \{test\}/, @response.body)
@@ -65,5 +67,75 @@ class AnystyleControllerTest < ActionDispatch::IntegrationTest
       %r{<dataset><sequence><\w+>test</\w+></sequence></dataset>},
       @response.body
     )
+  end
+
+  test 'parse should support single reference' do
+    post parse_url(format: 'json'), params: { input: 'A B' }
+    assert_response :success
+    assert_equal 'application/json', @response.media_type
+    assert_match(/\[\[\["\w+","A"\],\["\w+","B"\]\]\]/, @response.body)
+  end
+
+  test 'format should support csl' do
+    post format_url, params: {
+      format: 'csl',
+      dataset: '[{"tokens":[{"value":"test","label":"note"}]}]'
+    }
+
+    assert_response :success
+    assert_equal 'application/vnd.citationstyles.csl+json', @response.media_type
+    assert_equal 'test', JSON.parse(@response.body)[0]['note']
+  end
+
+  test 'format should support xml' do
+    post format_url, params: {
+      format: 'xml',
+      dataset: '[{"tokens":[{"value":"test","label":"note"}]}]'
+    }
+
+    assert_response :success
+    assert_equal 'application/xml', @response.media_type
+    assert_match(
+      %r{<dataset><sequence><note>test</note></sequence></dataset>},
+      @response.body
+    )
+  end
+
+  test 'format should support bib' do
+    post format_url, params: {
+      format: 'bibtex',
+      dataset: '[{"tokens":[{"value":"test","label":"note"}]}]'
+    }
+
+    assert_response :success
+    assert_equal 'application/x-bibtex', @response.media_type
+    assert_match(/^@\w+\{[\w-]+,\s+\w+ = \{test\}/, @response.body)
+  end
+
+  test 'format should save reviewed references for training' do
+    seq_count = Sequence.count
+
+    assert_enqueued_with(job: TrainModelJob) do
+      post format_url, params: {
+        format: 'csl',
+        reviewed: true,
+        dataset: '[{"pertinent":true,"tokens":[{"value":"test","label":"note"}]}]'
+      }
+
+      assert_response :success
+      assert_equal seq_count + 1, Sequence.count
+    end
+  end
+
+  test 'format should not save pertinent unreviewed references for training' do
+    seq_count = Sequence.count
+
+    post format_url, params: {
+      format: 'csl',
+      dataset: '[{"pertinent":true,"tokens":[{"value":"test","label":"note"}]}]'
+    }
+
+    assert_response :success
+    assert_equal seq_count, Sequence.count
   end
 end

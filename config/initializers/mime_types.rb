@@ -4,4 +4,4 @@
 # Mime::Type.register "text/richtext", :rtf
 
 Mime::Type.register 'application/vnd.citationstyles.csl+json', :csl
-Mime::Type.register 'application/x-bibtex', :bib
+Mime::Type.register 'application/x-bibtex', :bibtex

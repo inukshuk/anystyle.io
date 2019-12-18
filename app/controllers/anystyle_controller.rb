@@ -48,8 +48,10 @@ class AnystyleController < ApplicationController
       format.csl {
         render json: parser.format_csl(dataset)
       }
-      format.bib {
-        send_data parser.format_bibtex(dataset), filename: 'anystyle.bib'
+      format.bibtex {
+        send_data parser.format_bibtex(dataset),
+          filename: 'anystyle.bib',
+          type: :bibtex
       }
       format.xml {
         render xml: dataset.to_xml
