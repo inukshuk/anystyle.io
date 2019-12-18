@@ -11,13 +11,7 @@ class AnystyleController < ApplicationController
     input = params.require(:input).taint
 
     if input.length <= Rails.configuration.anystyle.parse_limit
-      dataset = parser.parse(input, format: 'wapiti')
-
-      respond_to do |format|
-        format.json {
-          render json: dataset.map { |s| s.map { |t| [t.label, t.value] } }
-        }
-      end
+      render_dataset parser.parse(input, format: 'wapiti')
     else
       bad_request 'status.excessive'
     end
@@ -39,7 +33,18 @@ class AnystyleController < ApplicationController
       seq
     })
 
+    render_dataset dataset
+  ensure
+    save_training_data sequences if train_model?
+  end
+
+  private
+
+  def render_dataset(dataset)
     respond_to do |format|
+      format.json {
+        render json: dataset.map { |s| s.map { |t| [t.label, t.value] } }
+      }
       format.csl {
         render json: parser.format_csl(dataset)
       }
@@ -50,11 +55,7 @@ class AnystyleController < ApplicationController
         render xml: dataset.to_xml
       }
     end
-  ensure
-    save_training_data sequences if train_model?
   end
-
-  private
 
   def parser
     AnyStyle.parser
