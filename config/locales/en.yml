@@ -15,6 +15,11 @@ en:
     github: View on GitHub
     gem: Install RubyGem
 
+  status:
+    bad_request: 'Bad Request'
+    excessive: 'Excessive Use'
+    unauthorized: 'Not Authorized'
+
   parser:
     error:
       heading: Oh Snap!

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_094856) do
+ActiveRecord::Schema.define(version: 2019_12_18_085019) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "user", limit: 256, null: false
+    t.string "access_token", null: false
+    t.integer "access_count", limit: 256, default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["access_token"], name: "index_accounts_on_access_token", unique: true
+    t.index ["user"], name: "index_accounts_on_user", unique: true
+  end
 
   create_table "sequences", force: :cascade do |t|
-    t.string "xml", null: false
+    t.string "xml", limit: 4096, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["xml"], name: "index_sequences_on_xml", unique: true

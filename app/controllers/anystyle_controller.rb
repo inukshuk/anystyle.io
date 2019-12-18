@@ -1,4 +1,9 @@
 class AnystyleController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :parse
+  before_action :verify_access_token, only: :parse
+
+  rescue_from ActionController::ParameterMissing, with: :bad_request
+
   def index
   end
 
@@ -14,7 +19,7 @@ class AnystyleController < ApplicationController
         }
       end
     else
-      bad_request 'Excessive use'
+      bad_request 'status.excessive'
     end
   ensure
     response.headers['X-AnyStyle-Last-Modified'] = model_time
@@ -71,5 +76,19 @@ class AnystyleController < ApplicationController
 
   def model_time
     view_context.time_ago_in_words parser.mtime, include_seconds: true
+  end
+
+  def verify_access_token
+    verify_authenticity_or_access_token
+  rescue
+    not_authorized
+  end
+
+  def verify_authenticity_or_access_token
+    if params.key? :access_token
+      Account.verify params.require(:access_token)
+    else
+      verify_authenticity_token
+    end
   end
 end
