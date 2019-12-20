@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
       apt-get update
       apt-get dist-upgrade -yq
       apt-get install -yq vim tmux git curl nginx ssl-cert \
-        postgresql postgresql-server-dev-all \
+        postgresql postgresql-server-dev-all nodejs \
         build-essential bison zlib1g-dev libyaml-dev libssl-dev \
         libgdbm-dev libreadline-dev libffi-dev libncurses5-dev
     EOS
@@ -89,6 +89,10 @@ Vagrant.configure(2) do |config|
       /var/www/anystyle/shared \
       /var/www/anystyle/shared/backups \
       /var/www/anystyle/shared/config
+
+    install -T -m 0600 -o vagrant -g www-data \
+      /vagrant/config/master.key \
+      /var/www/anystyle/shared/config/master.key
 
     echo "Generating staging certificates, this may take awhile..."
     openssl dhparam -out /etc/nginx/dhparam.pem 2048 &> /dev/null
