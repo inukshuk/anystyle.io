@@ -41,7 +41,7 @@ class TrainModelJob < ApplicationJob
       .pluck(:xml)
   end
 
-  def training_data(limit = 500)
+  def training_data(limit = 300)
     Wapiti::Dataset.parse(
       REXML::Document.new(
         "<dataset>#{sequences(limit).join('')}</dataset>"
