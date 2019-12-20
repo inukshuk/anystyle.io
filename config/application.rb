@@ -27,12 +27,8 @@ module AnyStyle
     # Load default AnyStyle configuration.
     config.anystyle = config_for :anystyle
 
-    # Use ActiveJob async adapter.
-    config.active_job.queue_adapter =
-      ActiveJob::QueueAdapters::AsyncAdapter.new(
-        min_threads: 0,
-        max_threads: 1
-      )
+    # Use Delayed Job ActiveJob adapter.
+    config.active_job.queue_adapter = :delayed_job
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

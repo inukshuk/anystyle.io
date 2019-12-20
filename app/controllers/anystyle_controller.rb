@@ -72,7 +72,7 @@ class AnystyleController < ApplicationController
   def save_training_data(sequences)
     saved_count = sequences.map(&:save).count(true)
 
-    unless saved_count.zero?
+    unless saved_count.zero? || TrainModelJob.pending?
       TrainModelJob.perform_later(parser.model.path)
     end
   end

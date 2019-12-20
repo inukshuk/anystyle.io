@@ -15,7 +15,10 @@ require 'pathname'
 pn = Pathname.new Rails.configuration.anystyle.model
 pn.parent.mkpath unless pn.parent.exist?
 
-FileUtils.cp original_model, pn.to_s unless pn.exist?
+# Reset model initially or after Gem update!
+if !pn.exist? || File.mtime(original_model) > pn.mtime
+  FileUtils.cp original_model, pn.to_s
+end
 
 AnyStyle::Parser.defaults[:model] =
   Rails.configuration.anystyle.model.dup.untaint
