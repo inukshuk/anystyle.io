@@ -11,7 +11,7 @@ Group=www-data
 Environment=RAILS_ENV=production
 
 WorkingDirectory=/var/www/anystyle/current
-ExecStart=/usr/local/bin/chruby-exec ruby-2.6.4 -- ./bin/delayed-job -n 1 run
+ExecStart=/usr/local/bin/chruby-exec ruby-2.6.4 -- ./bin/delayed_job -n 1 run
 
 Restart=always
 
