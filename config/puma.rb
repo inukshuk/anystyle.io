@@ -1,38 +1,28 @@
-# Puma can serve each request in a thread from an internal thread pool.
-# The `threads` method setting takes two numbers: a minimum and maximum.
-# Any libraries that use thread pools should be configured to match
-# the maximum value specified for Puma. Default is set to 5 threads for minimum
-# and maximum; this matches the default thread size of Active Record.
-#
-max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
-min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
-threads min_threads_count, max_threads_count
+#!/usr/bin/env puma
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port        ENV.fetch("PORT") { 3000 }
+current_path = File.expand_path('../..', __FILE__)
+shared_path = File.expand_path('..', __dir__)
 
-# Specifies the `environment` that Puma will run in.
-#
-environment ENV.fetch("RAILS_ENV") { "development" }
+rails_env = ENV['RAILS_ENV'] || 'development'
 
-# Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+directory current_path
+rackup "#{current_path}/config.ru"
+environment rails_env
 
-# Specifies the number of `workers` to boot in clustered mode.
-# Workers are forked web server processes. If using threads and workers together
-# the concurrency of the application would be max `threads` * `workers`.
-# Workers do not work on JRuby or Windows (both of which do not support
-# processes).
-#
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+threads 1,5
+workers 1
 
-# Use the `preload_app!` method when specifying a `workers` number.
-# This directive tells Puma to first boot the application and load code
-# before forking the application. This takes advantage of Copy On Write
-# process behavior so workers use less memory.
-#
+pidfile "#{shared_path}/tmp/pids/puma.pid"
+state_path "#{shared_path}/tmp/pids/puma.state"
+
+if rails_env == 'development'
+  bind 'tcp://0.0.0.0:3000'
+else
+  bind "unix://#{shared_path}/tmp/sockets/puma.sock"
+  activate_control_app "unix://#{shared_path}/tmp/sockets/ctl.sock"
+end
+
 # preload_app!
 
-# Allow puma to be restarted by `rails restart` command.
-plugin :tmp_restart
+# -*- mode: ruby -*-
+# vi: set ft=ruby :

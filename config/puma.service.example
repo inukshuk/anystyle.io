@@ -1,0 +1,19 @@
+[Unit]
+Description=Puma HTTP server for AnyStyle.io
+After=network.target
+
+[Service]
+Type=simple
+
+User=vagrant
+Group=www-data
+
+Environment=RAILS_ENV=production
+
+WorkingDirectory=/var/www/anystyle/current
+ExecStart=/usr/local/bin/chruby-exec ruby-2.6.4 -- ./bin/puma -C config/puma.rb
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
