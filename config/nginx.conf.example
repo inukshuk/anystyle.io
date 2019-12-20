@@ -9,7 +9,7 @@ server {
   server_name .anystyle.io;
   charset utf-8;
 
-  root /var/www/anystyle.io/current/public;
+  root /var/www/anystyle/current/public;
 
   ssl on;
   ssl_protocols TLSv1.2 TLSv1.3;
