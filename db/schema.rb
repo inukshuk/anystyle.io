@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_124201) do
   create_table "accounts", force: :cascade do |t|
     t.string "user", limit: 256, null: false
     t.string "access_token", null: false
-    t.integer "access_count", limit: 256, default: 0
+    t.integer "access_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["access_token"], name: "index_accounts_on_access_token", unique: true

@@ -3,7 +3,7 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
     create_table :accounts do |t|
       t.string :user, null: false, limit: 256
       t.string :access_token, null: false
-      t.integer :access_count, default: 0, limit: 256
+      t.integer :access_count, default: 0
 
       t.timestamps
     end
