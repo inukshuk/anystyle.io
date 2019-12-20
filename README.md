@@ -1,35 +1,61 @@
-# README
+# AnyStyle.io
+This is the [anystyle.io](https://anystyle.io) web app, a fast, smart, and
+interactive parser for academic references and bibliographies.
 
-## Quickstart
+See [anystyle](https://github.com/inukshuk/anystyle) for more details.
 
+## Roadmap / Wishlist
+
+* Upload PDFs for reference extraction
+* Re-format parsed references with any CSL style
+
+## Development Quickstart
     $ ruby -v
     # ruby 2.6.4
 
+    # Install RubyGems
     $ bundle install
 
+    # Set your credentials and generate config/master.key
+    $ ./bin/rails credentials:edit
+
+    # Create dev database
+    $ ./bin/rake db:create
+    $ ./bin/rake db:schema:load
+
+    # Make sure tests are green!
+    $ ./bin/rake test
+
+    # Start dev server and (optionally) worker
     $ ./bin/rails s
+    $ ./bin/rake jobs:work
 
+## Using the Staging Box
+    # You may want to edit Vagrantfile first!
+    $ vagrant up
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    # Set your credentials and generate config/master.key (if you haven't yet)
+    $ ./bin/rails credentials:edit
 
-Things you may want to cover:
+    # Initial deployment...
+    $ bundle exec cap staging deploy:check
+    $ bundle exec cap staging deploy
 
-* Ruby version
+    # Enable the anystyle services in the staging box
+    $ vagrant ssh
+    v sudo systemctl enable --now anystyle.service
+    v sudo systemctl enable --now anystyle-worker.service
 
-* System dependencies
+    # Open https://192.168.23.5 in your Browser!
 
+## Roll Your Own
+You can deploy the AnyStyle.io web-app to your own server! The
+[provisoning scripts](https://github.com/inukshuk/anystyle.io/blob/master/Vagrantfile#L25)
+and the sample server config files illustrate all the necessary setup.
 
-* Configuration
+## License
+Copyright 2013-2020 Sylvester Keil and Johannes Krtek.
+All rights reserved.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+AnyStyle.io is distributed under the GNU Affero General Public License.
+See LICENSE for details.
