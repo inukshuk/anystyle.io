@@ -73,74 +73,8 @@ section.documentation {
     }
   }
 
-  // API
-  #api {
+  // CLI
+  #cli {
     text-align: center;
-
-    .columns {
-      text-align: left;
-      margin-bottom: 20px;
-    }
-  }
-
-  #get-api-key {
-    padding: 40px 0;
-    background: tint($gray-dark, 3%);
-    margin: 60px 0;
-    height: 127px;
-
-    &:hover {
-      background: tint($gray-dark, 4%);
-    }
-
-    .col-md-3 {
-      padding-right: 30px;
-    }
-
-    input {
-      box-shadow: none;
-      background-color: transparent;
-      border: none;
-      color: $gray-lighter;
-      font: {
-        size: 36px;
-        weight: 500;
-      }
-      //line-height: 1;
-      height: auto;
-      padding: 0 0 0 15px;
-    }
-
-
-    /*::-webkit-input-placeholder {
-      @include placeholder;
-    }*/
-
-    ::-moz-placeholder {
-      font: {
-        size: 36px;
-        weight: 500;
-        //line-height: 1;
-      }
-    }
-
-    .btn {
-      //margin-top: 10px;
-      vertical-align: top;
-
-      &[disabled] {
-        background: $gray;
-        opacity: 0.5;
-      }
-    }
-
-    .success-message {
-      text-align: center;
-      font: {
-        size: 30px;
-        weight: 500;
-      }
-      line-height: 47px;
-    }
   }
 }

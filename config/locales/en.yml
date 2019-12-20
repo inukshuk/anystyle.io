@@ -12,7 +12,7 @@ en:
     claim_html: |-
       Parses <em>academic references</em> in no time!<br/>
       Copy &amp; paste your bibliography below to get started …
-    github: View on GitHub
+    github: Star on GitHub
     gem: Install RubyGem
 
   status:
@@ -83,13 +83,13 @@ en:
       center_html: >-
         <h3>2. Edit</h3>
 
-        <p><em>AnyStyle splits</em> your citation references into segments (author, title etc.)
+        <p><em>AnyStyle splits</em> your references into segments (author, title etc.)
         based on machine learning heuristics. These segments will be
         displayed in the token editor above. Please review each segment to
         make sure the results are correct; in case the parser got something
         wrong just <span class="text-selection">select individual tokens
         like you would select text in your favourite text editor</span> and
-        click on the 'Assign label' button to assign the correct label to
+        click on the <b>Assign label</b> button to assign the correct label to
         your selection.</p>
 
         <p>Pro tip: use <b>Shift</b> and <b>Ctrl/Command</b> to make multiple
@@ -123,8 +123,9 @@ en:
         to see whether or not your training data was already merged into the
         model.</p>
 
-        <p>Please note that we receive a lot of training data; too much data can
-        cause the model to deteriorate so we try to reset the model from time
+        <p>Please note that we receive a lot of training data; too much or
+        inconsistently-labelled data can
+        cause the model to deteriorate so we may reset the model from time
         to time. Please let us know if training the model does not work for you
         or if your parse results are poor so we can take a look. Also, if you'd
         be interested in helping us curate the training data, your help is
@@ -138,8 +139,17 @@ en:
         After installing the Gem you can start parsing references on your
         own computer directly from Ruby like this:
       more_html:
-        For more details on how to use and train the parser, please consult
-        the <a href="%{doc_url}">API documentation</a>.
+        The RubyGem also includes a finder module to extract references
+        from ful-text PDF documents.<br/>For more details on how to use and train the
+        parser and finder, please consult the <a href="%{doc_url}">API documentation</a>.
+
+    cli:
+      title: On the Command Line
+      install: >-
+        AnyStyle also has a command-line interface.
+      usage: >-
+        After installing the CLI Gem you can start parsing and extracting references.
+        To get started, consult the man pages for the individual commands:
 
   footer:
     title: Want to know more?
@@ -153,8 +163,8 @@ en:
       We believe that there are better ways to spend your time than to parse
       bibliographies by hand; and isn't it precisely at this sort of tedious
       work that machines are supposed to excel?
-      We hope this one will! However, if you find a bug or have a brilliant
-      idea for improvement that we missed, you are welcome to open an issue
+      We hope this one will! However, if you find a bug or have an
+      idea for improvement that we missed, you're welcome to open an issue
       or feature request.
 
     right_html: >-
@@ -163,7 +173,7 @@ en:
       that can be trained by everyone using our built-in editor.
       If you would like to support us, require more advanced adjustments,
       a custom model or want to integrate a similar parser into your own site
-      or product, we'd be happy to work with you.
+      or product, we'll be happy to work with you.
 
     issue: Report an issue!
     contact: Get in touch!

@@ -8,6 +8,7 @@ See [anystyle](https://github.com/inukshuk/anystyle) for more details.
 
 * Upload PDFs for reference extraction
 * Re-format parsed references with any CSL style
+* Improve integration with Zotero
 
 ## Development Quickstart
     $ ruby -v

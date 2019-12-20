@@ -48,6 +48,44 @@
     .container
       .row
         .col-md-12
-          %h2 On the Command Line
-          %p.lead
-            AnyStyle also has a command-line interface.
+          %h2=t "documentation.cli.title"
+          %p.lead=t "documentation.cli.install"
+          %pre
+            %code
+              :preserve
+                $ [sudo] gem install anystyle-cli
+          %p=t "documentation.ruby.usage"
+          %pre
+            %code
+              :preserve
+                $ anystyle --help
+
+                NAME
+                    anystyle - Finds and parses bibliographic references
+
+                SYNOPSIS
+                    anystyle [global options] command [command options] [arguments...]
+
+                VERSION
+                    1.3.3 (cli 1.2.0, data 1.2.0)
+
+                GLOBAL OPTIONS
+                    -F, --finder-model=file - Set the finder model file (default: none)
+                    -P, --parser-model=file - Set the parser model file (default: none)
+                    --adapter=name          - Set the dictionary adapter (default: ruby)
+                    -f, --format=name       - Set the output format (default: ["json"])
+                    --pdfinfo=path          - Set the path for pdfinfo (default: none)
+                    --pdftotext=path        - Set the path for pdftotext (default: none)
+                    --help                  - Show this message
+                    --[no-]stdout           - Print results directly to stdout
+                    --[no-]verbose          - Print status messages to stderr
+                    --version               - Display the program version
+                    -w, --[no-]overwrite    - Allow overwriting existing files
+
+                COMMANDS
+                    check   - Check tagged documents or references
+                    find    - Find and extract references from text documents
+                    help    - Shows a list of commands or help for one command
+                    license - Print license information
+                    parse   - Parse and convert references
+                    train   - Create a new finder or parser model
