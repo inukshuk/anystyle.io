@@ -1,5 +1,5 @@
 [Unit]
-Description=Delayed Job worker service for AnyStyle.io
+Description=AnyStyle-Worker Service
 After=network.target
 
 [Service]

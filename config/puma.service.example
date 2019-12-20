@@ -1,5 +1,5 @@
 [Unit]
-Description=Puma HTTP server for AnyStyle.io
+Description=AnyStyle Puma HTTP Server
 After=network.target
 
 [Service]
