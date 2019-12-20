@@ -22,4 +22,9 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  host: localhost
+  port: 5432
+  user: <%= Rails.application.credentials.db.user %>
+  password: <%= Rails.application.credentials.db.pass %>
+  database: anystyle
