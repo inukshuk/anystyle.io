@@ -1,7 +1,7 @@
 lock '3.11.2'
 
 set :application, 'anystyle'
-set :repo_url, 'https://github.com:inukshuk/anystyle.io.git'
+set :repo_url, 'https://github.com/inukshuk/anystyle.io.git'
 
 set :deploy_to, '/var/www/anystyle'
 

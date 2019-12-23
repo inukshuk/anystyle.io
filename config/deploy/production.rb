@@ -1,3 +1,3 @@
 set :stage, :production
 
-server 'anystyle', roles: %w{app db web}
+server 'anystyle.io', roles: %w{app db web}
