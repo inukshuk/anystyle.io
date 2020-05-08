@@ -46,7 +46,7 @@ class AnystyleController < ApplicationController
         render json: dataset.map { |s| s.map { |t| [t.label, t.value] } }
       }
       format.csl {
-        render json: parser.format_csl(dataset)
+        render json: parser.format_csl(dataset, date_format: 'citeproc')
       }
       format.bibtex {
         send_data parser.format_bibtex(dataset),
