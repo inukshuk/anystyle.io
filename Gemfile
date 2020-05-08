@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.4'
 
 gem 'anystyle', '~> 1.3'
+gem 'citeproc', '~> 1.0'
 
 gem 'rails', '~> 6.0'
 
