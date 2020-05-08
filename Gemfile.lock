@@ -112,6 +112,8 @@ GEM
     delayed_job_active_record (4.1.4)
       activerecord (>= 3.0, < 6.1)
       delayed_job (>= 3.0, < 5)
+    edtf (3.0.5)
+      activesupport (>= 3.0, < 7.0)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -257,6 +259,7 @@ DEPENDENCIES
   coffee-rails (~> 5.0)
   daemons
   delayed_job_active_record
+  edtf (~> 3.0)
   font_awesome5_rails
   haml-rails (>= 2)
   jquery-rails
