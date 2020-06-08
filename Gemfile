@@ -9,7 +9,7 @@ gem 'edtf', '~> 3.0'
 gem 'rails', '~> 6.0'
 
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use HAML for templates
 gem 'haml-rails', '>= 2'
 
