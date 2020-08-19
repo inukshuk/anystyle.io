@@ -1,4 +1,4 @@
-lock '3.14.0'
+lock '3.14.1'
 
 set :application, 'anystyle'
 set :repo_url, 'https://github.com/inukshuk/anystyle.io.git'
