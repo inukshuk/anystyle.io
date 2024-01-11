@@ -10,7 +10,7 @@ class AnystyleController < ApplicationController
   def parse
     input = params.require(:input)
 
-    if input.lines.length <= Rails.configuration.anystyle.parse_limit
+    if input.length <= Rails.configuration.anystyle.parse_limit
       render_dataset parser.parse(input, format: 'wapiti')
     else
       bad_request 'status.excessive'
