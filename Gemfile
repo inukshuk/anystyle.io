@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.4'
+ruby '3.2.2'
 
 gem 'anystyle', '~> 1.3'
 gem 'citeproc', '~> 1.0'
