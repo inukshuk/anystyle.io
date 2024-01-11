@@ -44,9 +44,9 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'ruby', type: 'shell', inline: <<~EOS
     if ! which ruby-install; then
-      curl -Ls https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz \
+      curl -Ls https://github.com/postmodern/ruby-install/archive/v0.9.3.tar.gz \
         | tar xz -C /tmp
-      cd /tmp/ruby-install-0.7.0
+      cd /tmp/ruby-install-0.9.3
       make install
     fi
 
