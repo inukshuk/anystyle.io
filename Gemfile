@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
-gem 'anystyle', '~> 1.3'
+gem 'anystyle', '~> 1.5'
 gem 'citeproc', '~> 1.0'
 gem 'edtf', '~> 3.0'
 
 gem 'rails', '~> 6.0'
 
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use HAML for templates
 gem 'haml-rails', '>= 2'
 
