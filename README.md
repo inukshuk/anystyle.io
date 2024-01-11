@@ -55,7 +55,7 @@ You can deploy the AnyStyle.io web-app to your own server! The
 and the sample server config files illustrate all the necessary setup.
 
 ## License
-Copyright 2013-2020 Sylvester Keil and Johannes Krtek.
+Copyright 2013-2024 Sylvester Keil and Johannes Krtek.
 All rights reserved.
 
 AnyStyle.io is distributed under the GNU Affero General Public License.
