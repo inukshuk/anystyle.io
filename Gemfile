@@ -25,7 +25,7 @@ gem 'jquery-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # Use the language detection normalizer
-gem 'language_detector', github: 'feedbackmine/language_detector'
+gem 'cld3'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
