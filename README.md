@@ -12,7 +12,7 @@ See [anystyle](https://github.com/inukshuk/anystyle) for more details.
 
 ## Development Quickstart
     $ ruby -v
-    # ruby 2.6.4
+    # ruby 3.2.2
 
     # Install RubyGems
     $ bundle install

@@ -21,4 +21,4 @@ if !pn.exist? || File.mtime(original_model) > pn.mtime
 end
 
 AnyStyle::Parser.defaults[:model] =
-  Rails.configuration.anystyle.model.dup.untaint
+  Rails.configuration.anystyle.model.dup

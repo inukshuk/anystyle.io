@@ -8,7 +8,7 @@ class AnystyleController < ApplicationController
   end
 
   def parse
-    input = params.require(:input).taint
+    input = params.require(:input)
 
     if input.length <= Rails.configuration.anystyle.parse_limit
       render_dataset parser.parse(input, format: 'wapiti')

@@ -20,7 +20,7 @@ class TrainModelJob < ApplicationJob
     parser.train core | training_data, truncate: true
 
     lock.synchronize do
-      parser.model.save path.untaint
+      parser.model.save path
     end
   end
 
